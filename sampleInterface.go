@@ -2,35 +2,32 @@ package main
 
 import "fmt"
 
-type myInterface interface {
-	area()
-}
-
-type triangle struct {
-	base   float64
-	height float64
-}
-
 type rectangle struct {
-	length  int
-	breadth int
+	length, breadth float32
+}
+type circle struct {
+	radius float32
 }
 
-func (T triangle) area() {
-	fmt.Println(0.5 * T.base * T.height)
+func (rec rectangle) area() float32 {
+	return rec.length * rec.breadth
 }
 
-func (R rectangle) area() {
-	fmt.Println(R.length * R.breadth)
+func (cir circle) area() float32 {
+	return 3.14 * cir.radius * cir.radius
+
 }
 
+type shape interface {
+	area() float32
+}
+
+func getArea(s shape) float32 {
+	return s.area()
+}
 func main() {
-	var I myInterface
-	T := triangle{base: 10.0, height: 20.0}
-	R := rectangle{length: 5, breadth: 10}
-	I = R
-	I.area()
-	I = T
-	I.area()
-
+	rect := rectangle{2, 3}
+	circ := circle{5}
+	fmt.Println(getArea(rect))
+	fmt.Println(getArea(circ))
 }
