@@ -1,5 +1,7 @@
 package main
 
+// In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both(Because of interfaces)
+
 import (
 	"fmt"
 )
