@@ -7,7 +7,7 @@ import (
 )
 
 var s = 0
-var mutex = &sync.Mutex{}
+var mutex sync.Mutex
 
 func depositor() {
 	for i := 0; i < 1000; i++ {
