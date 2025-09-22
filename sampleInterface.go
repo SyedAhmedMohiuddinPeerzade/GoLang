@@ -9,6 +9,10 @@ type circle struct {
 	radius float32
 }
 
+type shape interface {
+	area() float32
+}
+
 func (rec rectangle) area() float32 {
 	return rec.length * rec.breadth
 }
@@ -18,9 +22,6 @@ func (cir circle) area() float32 {
 
 }
 
-type shape interface {
-	area() float32
-}
 
 func getArea(s shape) float32 {
 	return s.area()
